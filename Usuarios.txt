@@ -1,0 +1,9 @@
+Empleado:
+
+usuario: alvaro
+password:123456
+
+Supervisor
+
+usuario:carlos
+password:carlos123

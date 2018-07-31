@@ -1,0 +1,36 @@
+﻿@model TallerMVC.Models.Repuesto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Repuesto</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.idRepuesto)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idRepuesto)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nombre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.costo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.costo)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

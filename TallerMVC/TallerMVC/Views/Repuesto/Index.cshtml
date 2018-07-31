@@ -1,0 +1,46 @@
+﻿@model IEnumerable<TallerMVC.Models.Repuesto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista repuestos</h2>
+
+<p>    
+    @Html.ActionLink("Nuevo Repuesto", "Create",null, new { @class="btn btn-secondary"})
+    @Html.ActionLink("Lista Usuarios", "Index","Usuario",null, new { @class="btn btn-secondary"})
+    @Html.ActionLink("Cerrar Sesion", "Index","Home",null, new { @class="btn btn-danger"})
+</p>
+<table class="table table-bordered">
+    <tr class="thead-dark">
+        <th>
+            @Html.DisplayNameFor(model => model.idRepuesto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.costo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idRepuesto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.costo)
+        </td>
+       <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idRepuesto }) 
+                   
+        </td>
+    </tr>
+}
+
+</table>

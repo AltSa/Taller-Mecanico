@@ -1,0 +1,54 @@
+﻿@model TallerMVC.Models.RepuestoOT
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>RepuestoOT</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.idRepuestoOT)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idRepuestoOT)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OrdenDeTrabajo.detalleFalla)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OrdenDeTrabajo.detalleFalla)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Repuesto.nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Repuesto.nombre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.cantidadDeRepuesto)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.cantidadDeRepuesto)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.cantidadHorasTrabajo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.cantidadHorasTrabajo)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

@@ -1,0 +1,48 @@
+﻿@model TallerMVC.Models.OrdenDeTrabajo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles</h2>
+
+<fieldset>
+    <legend>OrdenDeTrabajo</legend>
+
+    <h4>Patente:@Model.Vehiculo.nroPatente</h4>
+      <h4> Marca: @Model.Vehiculo.marca</h4>
+      <h4> Propietario:@Model.Vehiculo.Propietario.nombre @Model.Vehiculo.Propietario.apellido</h4>
+      <h4> Fecha Ingreso: @Model.fechaIngreso</h4>
+      <h4> Empleado:@Model.Usuario.nombreCompleto</h4>
+    
+    @if (Model.total != null)
+    { 
+        <h4>Total:$ @Model.total</h4>
+    }
+    <h4>Detalle Falla: @Model.detalleFalla </h4>
+
+    
+
+    <table class="table table-bordered">
+        <tr>
+            <th>Nombre del repuesto</th>
+            <th>Costo</th>
+            <th>Cantidad del repuesto</th>
+            <th>Horas trabajadas</th>
+        </tr>
+        @foreach (var item in Model.RepuestoOT)
+        { 
+            <tr>
+                <td>@item.Repuesto.nombre</td>
+                <td>@item.Repuesto.costo</td>
+                <td>@item.cantidadDeRepuesto</td>
+                <td>@item.cantidadHorasTrabajo</td>
+            </tr>
+        }
+    </table>
+    
+</fieldset>
+<p>@Html.ActionLink("Ver Detalles del propietario", "Details", "Propietario", new {id=Model.Vehiculo.idPropietario},null)
+   @Html.ActionLink("Lista Ordenes de trabajo", "Index")
+</p>
+

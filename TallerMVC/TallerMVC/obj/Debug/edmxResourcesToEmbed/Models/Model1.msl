@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TallerMecanicoModelStoreContainer" CdmEntityContainer="TallerMecanicoEntities">
+    <EntitySetMapping Name="OrdenDeTrabajo">
+      <EntityTypeMapping TypeName="TallerMecanicoModel.OrdenDeTrabajo">
+        <MappingFragment StoreEntitySet="OrdenDeTrabajo">
+          <ScalarProperty Name="idOrdenDeTrabajo" ColumnName="idOrdenDeTrabajo" />
+          <ScalarProperty Name="fechaIngreso" ColumnName="fechaIngreso" />
+          <ScalarProperty Name="detalleFalla" ColumnName="detalleFalla" />
+          <ScalarProperty Name="idVehiculo" ColumnName="idVehiculo" />
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="total" ColumnName="total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Propietario">
+      <EntityTypeMapping TypeName="TallerMecanicoModel.Propietario">
+        <MappingFragment StoreEntitySet="Propietario">
+          <ScalarProperty Name="idPropietario" ColumnName="idPropietario" />
+          <ScalarProperty Name="dni" ColumnName="dni" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Repuesto">
+      <EntityTypeMapping TypeName="TallerMecanicoModel.Repuesto">
+        <MappingFragment StoreEntitySet="Repuesto">
+          <ScalarProperty Name="idRepuesto" ColumnName="idRepuesto" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="costo" ColumnName="costo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RepuestoOT">
+      <EntityTypeMapping TypeName="TallerMecanicoModel.RepuestoOT">
+        <MappingFragment StoreEntitySet="RepuestoOT">
+          <ScalarProperty Name="idRepuestoOT" ColumnName="idRepuestoOT" />
+          <ScalarProperty Name="idOrdenDeTrabajo" ColumnName="idOrdenDeTrabajo" />
+          <ScalarProperty Name="idRepuesto" ColumnName="idRepuesto" />
+          <ScalarProperty Name="cantidadDeRepuesto" ColumnName="cantidadDeRepuesto" />
+          <ScalarProperty Name="cantidadHorasTrabajo" ColumnName="cantidadHorasTrabajo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rol">
+      <EntityTypeMapping TypeName="TallerMecanicoModel.Rol">
+        <MappingFragment StoreEntitySet="Rol">
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="TallerMecanicoModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="nombreUsuario" ColumnName="nombreUsuario" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
+          <ScalarProperty Name="nombreCompleto" ColumnName="nombreCompleto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vehiculo">
+      <EntityTypeMapping TypeName="TallerMecanicoModel.Vehiculo">
+        <MappingFragment StoreEntitySet="Vehiculo">
+          <ScalarProperty Name="idVehiculo" ColumnName="idVehiculo" />
+          <ScalarProperty Name="nroPatente" ColumnName="nroPatente" />
+          <ScalarProperty Name="marca" ColumnName="marca" />
+          <ScalarProperty Name="idPropietario" ColumnName="idPropietario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

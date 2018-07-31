@@ -1,0 +1,47 @@
+﻿@model TallerMVC.Models.Vehiculo
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Vehiculo</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.idVehiculo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idVehiculo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.nroPatente)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nroPatente)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.marca)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.marca)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Propietario.dni)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Propietario.dni)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

@@ -1,0 +1,50 @@
+﻿@model TallerMVC.Models.Usuario
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Usuario</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.idUsuario)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idUsuario)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.nombreUsuario)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nombreUsuario)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.password)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.password)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Rol.descripcion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Rol.descripcion)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.nombreCompleto)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nombreCompleto)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

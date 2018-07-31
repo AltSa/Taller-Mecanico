@@ -1,0 +1,68 @@
+﻿@model TallerMVC.Models.Propietario
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Propietario</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.idPropietario)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idPropietario)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.dni)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.dni)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nombre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.apellido)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.apellido)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.direccion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.direccion)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.telefono)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.telefono)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.mail)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.mail)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

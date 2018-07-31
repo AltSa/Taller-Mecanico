@@ -1,0 +1,52 @@
+﻿@model IEnumerable<TallerMVC.Models.Vehiculo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Crear", "Create")|
+    @Html.ActionLink("Cerrar Sesion", "Index","Home")
+</p>
+<table class="table table-bordered">
+    <tr class="thead-dark">
+        <th>
+            @Html.DisplayNameFor(model => model.idVehiculo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nroPatente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.marca)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idPropietario)
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idVehiculo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nroPatente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.marca)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idPropietario)
+        </td>
+        
+    </tr>
+}
+
+</table>
+<p>
+    @Html.ActionLink("Lista de Propietarios", "Index","Propietario")
+    @Html.ActionLink("Lista de Ordenes de trabajo", "Index","OrdenDeTrabajo")
+</p>

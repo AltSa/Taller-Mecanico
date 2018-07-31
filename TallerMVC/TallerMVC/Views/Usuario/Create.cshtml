@@ -1,0 +1,60 @@
+﻿@model TallerMVC.Models.Usuario
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Crear</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Usuario</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.nombreUsuario)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nombreUsuario)
+            @Html.ValidationMessageFor(model => model.nombreUsuario)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.password)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.password)
+            @Html.ValidationMessageFor(model => model.password)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.idRol, "Rol")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("idRol", String.Empty)
+            @Html.ValidationMessageFor(model => model.idRol)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.nombreCompleto)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nombreCompleto)
+            @Html.ValidationMessageFor(model => model.nombreCompleto)
+        </div>
+
+        <p>
+            <input type="submit" value="Crear" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Lista de usuarios", "Index",null, new { @class="btn btn-secondary"})
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

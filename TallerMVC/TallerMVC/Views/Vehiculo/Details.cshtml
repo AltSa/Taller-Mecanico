@@ -1,0 +1,43 @@
+﻿@model TallerMVC.Models.Vehiculo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Vehiculo</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.idVehiculo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idVehiculo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.nroPatente)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nroPatente)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.marca)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.marca)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Propietario.dni)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Propietario.dni)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

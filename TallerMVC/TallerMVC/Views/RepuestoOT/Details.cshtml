@@ -1,0 +1,50 @@
+﻿@model TallerMVC.Models.RepuestoOT
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>RepuestoOT</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.idRepuestoOT)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idRepuestoOT)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OrdenDeTrabajo.detalleFalla)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OrdenDeTrabajo.detalleFalla)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Repuesto.nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Repuesto.nombre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.cantidadDeRepuesto)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.cantidadDeRepuesto)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.cantidadHorasTrabajo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.cantidadHorasTrabajo)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

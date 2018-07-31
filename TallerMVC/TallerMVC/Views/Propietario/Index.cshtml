@@ -1,0 +1,68 @@
+﻿@model IEnumerable<TallerMVC.Models.Propietario>
+
+@{
+    ViewBag.Title = "Lista de RepuestoOT";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Lista de Ordenes de Trabajo", "Index","OrdenDeTrabajo",null, new { @class="btn btn-secondary"})
+    @Html.ActionLink("Cerrar Sesion", "Index","Home",null, new { @class="btn btn-danger"})
+</p>
+<table class="table table-bordered">
+    <tr class="thead-dark">
+        <th>
+            @Html.DisplayNameFor(model => model.idPropietario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dni)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mail)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idPropietario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dni)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mail)
+        </td>
+        <td>
+            @Html.ActionLink("Ver Detalles del propietario", "Details", "Propietario", new {id=item.idPropietario},null)
+        </td>
+    </tr>
+}
+
+</table>

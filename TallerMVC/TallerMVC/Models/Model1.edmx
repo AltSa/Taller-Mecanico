@@ -1,0 +1,471 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TallerMecanicoModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="TallerMecanicoModelStoreContainer">
+          <EntitySet Name="OrdenDeTrabajo" EntityType="TallerMecanicoModel.Store.OrdenDeTrabajo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Propietario" EntityType="TallerMecanicoModel.Store.Propietario" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Repuesto" EntityType="TallerMecanicoModel.Store.Repuesto" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RepuestoOT" EntityType="TallerMecanicoModel.Store.RepuestoOT" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Rol" EntityType="TallerMecanicoModel.Store.Rol" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Usuario" EntityType="TallerMecanicoModel.Store.Usuario" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Vehiculo" EntityType="TallerMecanicoModel.Store.Vehiculo" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_OrdenDeTrabajo_Usuario" Association="TallerMecanicoModel.Store.FK_OrdenDeTrabajo_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="OrdenDeTrabajo" EntitySet="OrdenDeTrabajo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdenDeTrabajo_Vehiculo" Association="TallerMecanicoModel.Store.FK_OrdenDeTrabajo_Vehiculo">
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+            <End Role="OrdenDeTrabajo" EntitySet="OrdenDeTrabajo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RepuestoOT_OrdenDeTrabajo" Association="TallerMecanicoModel.Store.FK_RepuestoOT_OrdenDeTrabajo">
+            <End Role="OrdenDeTrabajo" EntitySet="OrdenDeTrabajo" />
+            <End Role="RepuestoOT" EntitySet="RepuestoOT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RepuestoOT_Repuesto" Association="TallerMecanicoModel.Store.FK_RepuestoOT_Repuesto">
+            <End Role="Repuesto" EntitySet="Repuesto" />
+            <End Role="RepuestoOT" EntitySet="RepuestoOT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Rol" Association="TallerMecanicoModel.Store.FK_Usuario_Rol">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehiculo_Propietario" Association="TallerMecanicoModel.Store.FK_Vehiculo_Propietario">
+            <End Role="Propietario" EntitySet="Propietario" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="OrdenDeTrabajo">
+          <Key>
+            <PropertyRef Name="idOrdenDeTrabajo" />
+          </Key>
+          <Property Name="idOrdenDeTrabajo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="fechaIngreso" Type="datetime" Nullable="false" />
+          <Property Name="detalleFalla" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="idVehiculo" Type="int" Nullable="false" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+          <Property Name="total" Type="float" />
+        </EntityType>
+        <EntityType Name="Propietario">
+          <Key>
+            <PropertyRef Name="idPropietario" />
+          </Key>
+          <Property Name="idPropietario" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="dni" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="apellido" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="direccion" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="telefono" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="mail" Type="varchar" Nullable="false" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="Repuesto">
+          <Key>
+            <PropertyRef Name="idRepuesto" />
+          </Key>
+          <Property Name="idRepuesto" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="costo" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RepuestoOT">
+          <Key>
+            <PropertyRef Name="idRepuestoOT" />
+          </Key>
+          <Property Name="idRepuestoOT" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idOrdenDeTrabajo" Type="int" Nullable="false" />
+          <Property Name="idRepuesto" Type="int" Nullable="false" />
+          <Property Name="cantidadDeRepuesto" Type="int" Nullable="false" />
+          <Property Name="cantidadHorasTrabajo" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="idRol" />
+          </Key>
+          <Property Name="idRol" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombreUsuario" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="password" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="idRol" Type="int" Nullable="false" />
+          <Property Name="nombreCompleto" Type="varchar" Nullable="false" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Vehiculo">
+          <Key>
+            <PropertyRef Name="idVehiculo" />
+          </Key>
+          <Property Name="idVehiculo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nroPatente" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="marca" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="idPropietario" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_OrdenDeTrabajo_Usuario">
+          <End Role="Usuario" Type="TallerMecanicoModel.Store.Usuario" Multiplicity="1" />
+          <End Role="OrdenDeTrabajo" Type="TallerMecanicoModel.Store.OrdenDeTrabajo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="OrdenDeTrabajo">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdenDeTrabajo_Vehiculo">
+          <End Role="Vehiculo" Type="TallerMecanicoModel.Store.Vehiculo" Multiplicity="1" />
+          <End Role="OrdenDeTrabajo" Type="TallerMecanicoModel.Store.OrdenDeTrabajo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehiculo">
+              <PropertyRef Name="idVehiculo" />
+            </Principal>
+            <Dependent Role="OrdenDeTrabajo">
+              <PropertyRef Name="idVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RepuestoOT_OrdenDeTrabajo">
+          <End Role="OrdenDeTrabajo" Type="TallerMecanicoModel.Store.OrdenDeTrabajo" Multiplicity="1" />
+          <End Role="RepuestoOT" Type="TallerMecanicoModel.Store.RepuestoOT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrdenDeTrabajo">
+              <PropertyRef Name="idOrdenDeTrabajo" />
+            </Principal>
+            <Dependent Role="RepuestoOT">
+              <PropertyRef Name="idOrdenDeTrabajo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RepuestoOT_Repuesto">
+          <End Role="Repuesto" Type="TallerMecanicoModel.Store.Repuesto" Multiplicity="1" />
+          <End Role="RepuestoOT" Type="TallerMecanicoModel.Store.RepuestoOT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Repuesto">
+              <PropertyRef Name="idRepuesto" />
+            </Principal>
+            <Dependent Role="RepuestoOT">
+              <PropertyRef Name="idRepuesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Rol">
+          <End Role="Rol" Type="TallerMecanicoModel.Store.Rol" Multiplicity="1" />
+          <End Role="Usuario" Type="TallerMecanicoModel.Store.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehiculo_Propietario">
+          <End Role="Propietario" Type="TallerMecanicoModel.Store.Propietario" Multiplicity="1" />
+          <End Role="Vehiculo" Type="TallerMecanicoModel.Store.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Propietario">
+              <PropertyRef Name="idPropietario" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="idPropietario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TallerMecanicoModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TallerMecanicoEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="OrdenDeTrabajo" EntityType="TallerMecanicoModel.OrdenDeTrabajo" />
+          <EntitySet Name="Propietario" EntityType="TallerMecanicoModel.Propietario" />
+          <EntitySet Name="Repuesto" EntityType="TallerMecanicoModel.Repuesto" />
+          <EntitySet Name="RepuestoOT" EntityType="TallerMecanicoModel.RepuestoOT" />
+          <EntitySet Name="Rol" EntityType="TallerMecanicoModel.Rol" />
+          <EntitySet Name="Usuario" EntityType="TallerMecanicoModel.Usuario" />
+          <EntitySet Name="Vehiculo" EntityType="TallerMecanicoModel.Vehiculo" />
+          <AssociationSet Name="FK_OrdenDeTrabajo_Usuario" Association="TallerMecanicoModel.FK_OrdenDeTrabajo_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="OrdenDeTrabajo" EntitySet="OrdenDeTrabajo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdenDeTrabajo_Vehiculo" Association="TallerMecanicoModel.FK_OrdenDeTrabajo_Vehiculo">
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+            <End Role="OrdenDeTrabajo" EntitySet="OrdenDeTrabajo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RepuestoOT_OrdenDeTrabajo" Association="TallerMecanicoModel.FK_RepuestoOT_OrdenDeTrabajo">
+            <End Role="OrdenDeTrabajo" EntitySet="OrdenDeTrabajo" />
+            <End Role="RepuestoOT" EntitySet="RepuestoOT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehiculo_Propietario" Association="TallerMecanicoModel.FK_Vehiculo_Propietario">
+            <End Role="Propietario" EntitySet="Propietario" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RepuestoOT_Repuesto" Association="TallerMecanicoModel.FK_RepuestoOT_Repuesto">
+            <End Role="Repuesto" EntitySet="Repuesto" />
+            <End Role="RepuestoOT" EntitySet="RepuestoOT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Rol" Association="TallerMecanicoModel.FK_Usuario_Rol">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="OrdenDeTrabajo">
+          <Key>
+            <PropertyRef Name="idOrdenDeTrabajo" />
+          </Key>
+          <Property Name="idOrdenDeTrabajo" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="fechaIngreso" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="detalleFalla" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="idVehiculo" Type="Int32" Nullable="false" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <Property Name="total" Type="Double" />
+          <NavigationProperty Name="Usuario" Relationship="TallerMecanicoModel.FK_OrdenDeTrabajo_Usuario" FromRole="OrdenDeTrabajo" ToRole="Usuario" />
+          <NavigationProperty Name="Vehiculo" Relationship="TallerMecanicoModel.FK_OrdenDeTrabajo_Vehiculo" FromRole="OrdenDeTrabajo" ToRole="Vehiculo" />
+          <NavigationProperty Name="RepuestoOT" Relationship="TallerMecanicoModel.FK_RepuestoOT_OrdenDeTrabajo" FromRole="OrdenDeTrabajo" ToRole="RepuestoOT" />
+        </EntityType>
+        <EntityType Name="Propietario">
+          <Key>
+            <PropertyRef Name="idPropietario" />
+          </Key>
+          <Property Name="idPropietario" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="dni" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="apellido" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="direccion" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="telefono" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="mail" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Vehiculo" Relationship="TallerMecanicoModel.FK_Vehiculo_Propietario" FromRole="Propietario" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="Repuesto">
+          <Key>
+            <PropertyRef Name="idRepuesto" />
+          </Key>
+          <Property Name="idRepuesto" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="costo" Type="Double" Nullable="false" />
+          <NavigationProperty Name="RepuestoOT" Relationship="TallerMecanicoModel.FK_RepuestoOT_Repuesto" FromRole="Repuesto" ToRole="RepuestoOT" />
+        </EntityType>
+        <EntityType Name="RepuestoOT">
+          <Key>
+            <PropertyRef Name="idRepuestoOT" />
+          </Key>
+          <Property Name="idRepuestoOT" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="idOrdenDeTrabajo" Type="Int32" Nullable="false" />
+          <Property Name="idRepuesto" Type="Int32" Nullable="false" />
+          <Property Name="cantidadDeRepuesto" Type="Int32" Nullable="false" />
+          <Property Name="cantidadHorasTrabajo" Type="Double" Nullable="false" />
+          <NavigationProperty Name="OrdenDeTrabajo" Relationship="TallerMecanicoModel.FK_RepuestoOT_OrdenDeTrabajo" FromRole="RepuestoOT" ToRole="OrdenDeTrabajo" />
+          <NavigationProperty Name="Repuesto" Relationship="TallerMecanicoModel.FK_RepuestoOT_Repuesto" FromRole="RepuestoOT" ToRole="Repuesto" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="idRol" />
+          </Key>
+          <Property Name="idRol" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Usuario" Relationship="TallerMecanicoModel.FK_Usuario_Rol" FromRole="Rol" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreUsuario" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="idRol" Type="Int32" Nullable="false" />
+          <Property Name="nombreCompleto" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="OrdenDeTrabajo" Relationship="TallerMecanicoModel.FK_OrdenDeTrabajo_Usuario" FromRole="Usuario" ToRole="OrdenDeTrabajo" />
+          <NavigationProperty Name="Rol" Relationship="TallerMecanicoModel.FK_Usuario_Rol" FromRole="Usuario" ToRole="Rol" />
+        </EntityType>
+        <EntityType Name="Vehiculo">
+          <Key>
+            <PropertyRef Name="idVehiculo" />
+          </Key>
+          <Property Name="idVehiculo" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="nroPatente" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="marca" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="idPropietario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OrdenDeTrabajo" Relationship="TallerMecanicoModel.FK_OrdenDeTrabajo_Vehiculo" FromRole="Vehiculo" ToRole="OrdenDeTrabajo" />
+          <NavigationProperty Name="Propietario" Relationship="TallerMecanicoModel.FK_Vehiculo_Propietario" FromRole="Vehiculo" ToRole="Propietario" />
+        </EntityType>
+        <Association Name="FK_OrdenDeTrabajo_Usuario">
+          <End Role="Usuario" Type="TallerMecanicoModel.Usuario" Multiplicity="1" />
+          <End Role="OrdenDeTrabajo" Type="TallerMecanicoModel.OrdenDeTrabajo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="OrdenDeTrabajo">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdenDeTrabajo_Vehiculo">
+          <End Role="Vehiculo" Type="TallerMecanicoModel.Vehiculo" Multiplicity="1" />
+          <End Role="OrdenDeTrabajo" Type="TallerMecanicoModel.OrdenDeTrabajo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehiculo">
+              <PropertyRef Name="idVehiculo" />
+            </Principal>
+            <Dependent Role="OrdenDeTrabajo">
+              <PropertyRef Name="idVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RepuestoOT_OrdenDeTrabajo">
+          <End Role="OrdenDeTrabajo" Type="TallerMecanicoModel.OrdenDeTrabajo" Multiplicity="1" />
+          <End Role="RepuestoOT" Type="TallerMecanicoModel.RepuestoOT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrdenDeTrabajo">
+              <PropertyRef Name="idOrdenDeTrabajo" />
+            </Principal>
+            <Dependent Role="RepuestoOT">
+              <PropertyRef Name="idOrdenDeTrabajo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehiculo_Propietario">
+          <End Role="Propietario" Type="TallerMecanicoModel.Propietario" Multiplicity="1" />
+          <End Role="Vehiculo" Type="TallerMecanicoModel.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Propietario">
+              <PropertyRef Name="idPropietario" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="idPropietario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RepuestoOT_Repuesto">
+          <End Role="Repuesto" Type="TallerMecanicoModel.Repuesto" Multiplicity="1" />
+          <End Role="RepuestoOT" Type="TallerMecanicoModel.RepuestoOT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Repuesto">
+              <PropertyRef Name="idRepuesto" />
+            </Principal>
+            <Dependent Role="RepuestoOT">
+              <PropertyRef Name="idRepuesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Rol">
+          <End Role="Rol" Type="TallerMecanicoModel.Rol" Multiplicity="1" />
+          <End Role="Usuario" Type="TallerMecanicoModel.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TallerMecanicoModelStoreContainer" CdmEntityContainer="TallerMecanicoEntities">
+          <EntitySetMapping Name="OrdenDeTrabajo">
+            <EntityTypeMapping TypeName="TallerMecanicoModel.OrdenDeTrabajo">
+              <MappingFragment StoreEntitySet="OrdenDeTrabajo">
+                <ScalarProperty Name="idOrdenDeTrabajo" ColumnName="idOrdenDeTrabajo" />
+                <ScalarProperty Name="fechaIngreso" ColumnName="fechaIngreso" />
+                <ScalarProperty Name="detalleFalla" ColumnName="detalleFalla" />
+                <ScalarProperty Name="idVehiculo" ColumnName="idVehiculo" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="total" ColumnName="total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Propietario">
+            <EntityTypeMapping TypeName="TallerMecanicoModel.Propietario">
+              <MappingFragment StoreEntitySet="Propietario">
+                <ScalarProperty Name="idPropietario" ColumnName="idPropietario" />
+                <ScalarProperty Name="dni" ColumnName="dni" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Repuesto">
+            <EntityTypeMapping TypeName="TallerMecanicoModel.Repuesto">
+              <MappingFragment StoreEntitySet="Repuesto">
+                <ScalarProperty Name="idRepuesto" ColumnName="idRepuesto" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="costo" ColumnName="costo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RepuestoOT">
+            <EntityTypeMapping TypeName="TallerMecanicoModel.RepuestoOT">
+              <MappingFragment StoreEntitySet="RepuestoOT">
+                <ScalarProperty Name="idRepuestoOT" ColumnName="idRepuestoOT" />
+                <ScalarProperty Name="idOrdenDeTrabajo" ColumnName="idOrdenDeTrabajo" />
+                <ScalarProperty Name="idRepuesto" ColumnName="idRepuesto" />
+                <ScalarProperty Name="cantidadDeRepuesto" ColumnName="cantidadDeRepuesto" />
+                <ScalarProperty Name="cantidadHorasTrabajo" ColumnName="cantidadHorasTrabajo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rol">
+            <EntityTypeMapping TypeName="TallerMecanicoModel.Rol">
+              <MappingFragment StoreEntitySet="Rol">
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="TallerMecanicoModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="nombreUsuario" ColumnName="nombreUsuario" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="nombreCompleto" ColumnName="nombreCompleto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehiculo">
+            <EntityTypeMapping TypeName="TallerMecanicoModel.Vehiculo">
+              <MappingFragment StoreEntitySet="Vehiculo">
+                <ScalarProperty Name="idVehiculo" ColumnName="idVehiculo" />
+                <ScalarProperty Name="nroPatente" ColumnName="nroPatente" />
+                <ScalarProperty Name="marca" ColumnName="marca" />
+                <ScalarProperty Name="idPropietario" ColumnName="idPropietario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

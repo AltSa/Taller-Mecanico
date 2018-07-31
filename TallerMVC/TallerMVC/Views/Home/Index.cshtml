@@ -1,0 +1,41 @@
+﻿@model IEnumerable<TallerMVC.Models.Usuario>
+
+@{
+    ViewBag.Title = "Loguearse";
+}
+
+<body>
+
+<div class="mx-auto" style="width: 200px;">
+<h5>Iniciar sesion</h5>
+
+
+
+@using (Html.BeginForm("Loguearse", "Home"))
+{   <div class="form-group" >
+    <label>Nombre Usuario</label><br />
+    <input type="text" name="nombre" value="" />
+    </div>
+    <br />
+    <div class="form-group">
+    <label>Contraseña</label><br />
+    <input type="password" name="password" value="" />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Enviar</button>
+}
+
+
+
+  @if (ViewBag.MensajeError!= null)
+  { 
+    <p>@ViewBag.MensajeError</p>
+  
+  }
+
+  </div>
+
+</body>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

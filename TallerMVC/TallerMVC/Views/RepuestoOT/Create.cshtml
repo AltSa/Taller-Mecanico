@@ -1,0 +1,54 @@
+﻿@model TallerMVC.Models.RepuestoOT
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Crear</h2>
+
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Repuesto Orden de Trabajo</legend>
+
+        
+        
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.idRepuesto, "Repuesto")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("idRepuesto", String.Empty)
+            @Html.ValidationMessageFor(model => model.idRepuesto)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.cantidadDeRepuesto)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.cantidadDeRepuesto)
+            @Html.ValidationMessageFor(model => model.cantidadDeRepuesto)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.cantidadHorasTrabajo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.cantidadHorasTrabajo)
+            @Html.ValidationMessageFor(model => model.cantidadHorasTrabajo)
+        </div>
+
+        <p>
+            <input type="submit" value="Crear" />
+        </p>
+    </fieldset>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

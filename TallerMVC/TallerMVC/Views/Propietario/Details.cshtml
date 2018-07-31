@@ -1,0 +1,40 @@
+﻿@model TallerMVC.Models.Propietario
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles</h2>
+
+<fieldset>
+    <legend>Propietario</legend>
+
+    <h4>Nombre: @Model.nombre</h4>
+    <h4>Apellido: @Model.apellido</h4>
+    <h4>DNI: @Model.dni</h4>
+    <h4>Direccion: @Model.direccion</h4>
+    <h4>Telefono: @Model.telefono</h4>
+    <h4>mail: @Model.mail</h4>
+
+    <table class="table table-bordered">
+        <tr>
+            <td>Vehiculo</td>
+            <td>Patente</td>
+        </tr>
+        @foreach(var item in Model.Vehiculo)
+        {
+        <tr>
+            <td>@item.marca</td>
+            <td>@item.nroPatente</td>
+        </tr>    
+        }
+    </table>
+    
+    
+    
+</fieldset>
+<p>
+    
+    @Html.ActionLink("Lista de Propietarios", "Index")|
+     @Html.ActionLink("Editar este propietario", "Edit", new { id=Model.idPropietario})
+</p>

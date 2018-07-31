@@ -1,0 +1,37 @@
+﻿@model TallerMVC.Models.Usuario
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Usuario</legend>
+    <h4>Nombre Empleado:@Model.nombreCompleto</h4>
+
+    <table border="1">
+        <tr>
+            <td>id Orden de trabajo</td>
+            <td>Vehiculo</td>
+            <td>Patente</td>
+            <td>Fecha Ingreso</td>
+        </tr>
+        @foreach (var item in Model.OrdenDeTrabajo)
+        { 
+            <tr>
+                <td>@item.idOrdenDeTrabajo</td>
+                <td>@item.Vehiculo.marca</td>
+                <td>@item.Vehiculo.nroPatente</td>
+                <td>@item.fechaIngreso</td>
+            </tr>
+        
+        }
+    </table>
+
+    
+</fieldset>
+<p>
+    
+    @Html.ActionLink("Lista de Usuarios", "Index")
+</p>

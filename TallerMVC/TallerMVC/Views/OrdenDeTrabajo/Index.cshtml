@@ -1,0 +1,155 @@
+﻿@model IEnumerable<TallerMVC.Models.OrdenDeTrabajo>
+
+@{
+    ViewBag.Title = "Index";
+    
+}
+
+<h5>Filtrar por Usuario</h5>
+<div>
+@using (Html.BeginForm("Filtrar", "OrdenDeTrabajo"))
+{ 
+    <input type="text" name="nombreUsuario" value=""/>
+    <input type="submit" name="button" value="Buscar" />
+
+    
+}
+</div>
+
+<h4>Ordenes de trabajo</h4>
+
+<p>
+    @Html.ActionLink("Crear Nueva", "Create",null, new { @class="btn btn-secondary" })
+    @Html.ActionLink("Cerrar Sesion", "Index","Home",null, new { @class="btn btn-danger"})
+</p>
+
+<h5>Ordenes sin cerrar</h5>
+<table  class="table table-bordered">
+    <tr class="table-success">
+        <th>
+            id Orden de Trabajo
+        </th>
+        <th>
+            Fecha de Ingreso
+        </th>
+        <th>
+            Detalle falla
+        </th>
+        <th>
+            Nro de patente
+        </th>
+        <th>
+            Nombre del Empleado
+        </th>
+        <th>
+            Total
+        </th>
+
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    if(item.total==null)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idOrdenDeTrabajo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaIngreso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.detalleFalla)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehiculo.nroPatente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario.nombreUsuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.total)
+        </td>
+        <td>           
+            @Html.ActionLink("Detalles", "Details", new { idOrdenDeTrabajo=item.idOrdenDeTrabajo  })  
+        </td>
+          
+        <td> @Html.ActionLink("Agregar repuesto", "Create", "RepuestoOT", new { idOrdenDeTrabajo = item.idOrdenDeTrabajo }, null) </td>
+        @if(item.RepuestoOT.Count()>0)
+        {
+            <td> @Html.ActionLink("Cerrar", "Close", new { idOrdenDeTrabajo=item.idOrdenDeTrabajo },null)</td>
+        }else
+        {
+            <td>sin repuestos agregados</td>
+        }
+        
+    </tr>
+    }
+}
+
+</table>
+
+<div>
+    <h5>Ordenes Cerraradas</h5>
+<table class="table table-bordered" >
+    <tr class="table-warning">
+        <th>
+            id Orden de Trabajo
+        </th>
+        <th>
+            Fecha de Ingreso
+        </th>
+        <th>
+            Detalle falla
+        </th>
+        <th>
+            Nro de patente
+        </th>
+        <th>
+            Nombre del Empleado
+        </th>
+        <th>
+            Total
+        </th>
+
+        <th></th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    if(item.total!=null)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idOrdenDeTrabajo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaIngreso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.detalleFalla)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehiculo.nroPatente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario.nombreUsuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.total)
+        </td>
+        <td>           
+            @Html.ActionLink("Detalles", "Details", new { idOrdenDeTrabajo=item.idOrdenDeTrabajo  })  
+        </td>                   
+        
+    </tr>
+    }
+}
+
+</table>
+
+
+</div>
+<p>@Html.ActionLink("Lista completa", "Index",null, new { @class="btn btn-secondary" })</p>

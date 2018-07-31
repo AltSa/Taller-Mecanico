@@ -1,0 +1,61 @@
+﻿@model TallerMVC.Models.OrdenDeTrabajo
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>OrdenDeTrabajo</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.idOrdenDeTrabajo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idOrdenDeTrabajo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fechaIngreso)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fechaIngreso)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.detalleFalla)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.detalleFalla)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Vehiculo.nroPatente)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Vehiculo.nroPatente)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Usuario.nombreUsuario)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Usuario.nombreUsuario)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.total)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.total)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
